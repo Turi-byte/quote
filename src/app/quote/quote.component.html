@@ -1,7 +1,13 @@
 <div>
-  <h1>Turi Quotes</h1>
-  <ul>
-    <div *ngFor='let quote of quotes; let i = index'>
+  <h1 class="ml-3">Turi Quotes</h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+
+    </div>
+  </div>
+  <ul class="ml-5" style="list-style: none">
+    <div class="mb-3" *ngFor='let quote of quotes; let i = index'>
       <li>
         {{quote.name}} <br>
         <button (click)="quote.upvotes = quote.upvotes + 1">Upvote<i class="fa fa-thumbs-up"></i>        {{quote.upvotes}}

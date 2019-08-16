@@ -1,6 +1,16 @@
 <div>
   <h1>Turi Quotes</h1>
   <ul>
-    <li *ngFor='let quote of quotes'>{{quote.name}}</li>
+    <div *ngFor='let quote of quotes; let i = index'>
+      <li>
+        {{quote.name}}
+        <button (click)="quote.upvotes = quote.upvotes + 1">Upvote<i class="fa fa-thumbs-up"></i></button>
+        <br><p>Upvotes : {{quote.upvotes}}</p>
+        <button (click)="quote.downvotes = quote.downvotes + 1">Downvote<i class="fa fa-thumbs-down"></i></button>
+        <br><p>DownVotes : {{quote.downvotes}}</p>
+      </li>
+      <button (click)='toggleDetails(i)'>Toggle Details</button>
+      <app-quote-details *ngIf='quote.showDetails' [quote]='quote' (isDelete)='deleteQuote($event,i)'></app-quote-details>
+    </div>
   </ul>
 </div>

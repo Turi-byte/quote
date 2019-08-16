@@ -8,14 +8,25 @@ import { Quote } from '../quote';
 })
 export class QuoteComponent implements OnInit {
 
-  quotes: Quote[]= [
-    {id:1,name:'Never,never give up.',author:'Winston Churchill',publisher:'Turi'},
-    {id:2,name:'Teach me how to dougie up in this.',author:'Soulja Boy',publisher:'Lucy'},
-    {id:3,name:'A poor workman quarrels with his tools',author:'Winchester men',publisher:'Steve'},
-    {id:4,name:'Pride comes before a fall',author:'Marcus Riley',publisher:'Marcus'},
-    {id:5,name:'Whatever it takes',author:'Timmy Tdat',publisher:'Jeff'},
-    {id:6,name:'One mans trash is another man\'s treasure',author:'Mr.Anonymous',publisher:'Kibe'},
-   ];
+  quotes: Quote[] = [
+    new Quote(1, 'Never,never give up.', 'Winston Churchill', 'Turi',0,0),
+    new Quote(2, 'Teach me how to dougie up in this.', 'Soulja Boy', 'Lucy',0,0),
+    new Quote(3, 'A poor workman quarrels with his tools', 'Winchester men', 'Steve',0,0),
+    new Quote(4, 'Pride comes before a fall', 'Marcus Riley', 'Marcus',0,0),
+    new Quote(5, 'Whatever it takes', 'Timmy Tdat', 'Jeff',0,0),
+    new Quote(6, 'One mans trash is another man\'s treasure', 'Mr.Anonymous', 'Kibe',0,0),
+  ];
+
+  toggleDetails(index){
+    this.quotes[index].showDetails = !this.quotes[index].showDetails;
+  }
+
+  deleteQuote(isDelete,index){
+    let toDelete = confirm(`Are you sure you wanna delete this?`)
+    if (toDelete){
+      this.quotes.splice(index,1);
+    }
+  }
 
   constructor() { }
 

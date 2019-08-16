@@ -1,2 +1,3 @@
-<p>{{quote.publisher}}</p>
+<p>~{{quote.author}}~</p>
+<p>posted by {{quote.publisher}} on {{quote.completeDate|date}} which is {{quote.completeDate|dateCount}} days ago</p>
 <button (click)='quoteDelete(true)'>Delete</button>

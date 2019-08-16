@@ -4,7 +4,6 @@
     <div *ngFor='let quote of quotes; let i = index'>
       <li>
         {{quote.name}} <br>
-        posted on {{quote.completeDate}} <br>
         <button (click)="quote.upvotes = quote.upvotes + 1">Upvote<i class="fa fa-thumbs-up"></i>        {{quote.upvotes}}
         </button> 
         <button (click)="quote.downvotes = quote.downvotes + 1">Downvote<i class="fa fa-thumbs-down"></i>    {{quote.downvotes}}</button>

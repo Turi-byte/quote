@@ -7,6 +7,7 @@ import { QuoteComponent } from './quote/quote.component';
 import { QuoteDetailsComponent } from './quote-details/quote-details.component';
 import { DateCountPipe } from './date-count.pipe';
 import { HighlightDirective } from './highlight.directive';
+import { OrderByUpvotesPipe } from './order-by-upvotes.pipe';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { HighlightDirective } from './highlight.directive';
     QuoteComponent,
     QuoteDetailsComponent,
     DateCountPipe,
-    HighlightDirective
+    HighlightDirective,
+    OrderByUpvotesPipe
   ],
   imports: [
     BrowserModule,

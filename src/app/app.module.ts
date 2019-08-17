@@ -11,6 +11,9 @@ import { DateCountPipe } from './date-count.pipe';
 import { HighlightDirective } from './highlight.directive';
 import { OrderByUpvotesPipe } from './order-by-upvotes.pipe';
 import { QuoteFormComponent } from './quote-form/quote-form.component';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { QuoteFormComponent } from './quote-form/quote-form.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule    
+    HttpClientModule,
+    NgProgressModule.forRoot(),
+    NgProgressHttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

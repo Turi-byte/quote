@@ -49,6 +49,9 @@ export class QuoteComponent implements OnInit {
     this.http.get<ApiResponse>("http://quotes.stormconsultancy.co.uk/random.json").subscribe(data=>{
       //Successful API request
       this.quote = new Quotes(data.author,data.quote)
+    },err=>{
+      this.quote = new Quotes("Turi Way","Coding crazy!")
+      console.log("An error occured")
     })
   }
 

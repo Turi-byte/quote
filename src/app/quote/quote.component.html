@@ -2,6 +2,12 @@
   <h1 class="ml-3">Turi Quotes</h1>
   <hr>
   <div class="row">
+    <blockquote class="blockquote text-center">
+      <p class="mb-0">{{quote.quote}}</p>
+      <footer class="blockquote-footer"><cite>{{quote.author}}</cite></footer>
+    </blockquote>
+  </div>
+  <div class="row">
     <div class="col-md-6">
         <div class="mb-3" *ngFor='let quote of quotes; let i = index'>
           <div>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Quote } from '../quote';
 import {QuoteService } from '../quote-service/quote.service'
 import { AlertService } from '../alert-service/alert.service';
+import { Quotes } from '../quote-class/quote'
 
 @Component({
   selector: 'app-quote',
@@ -12,6 +14,7 @@ export class QuoteComponent implements OnInit {
 
   quotes: Quote[];
   alertService:AlertService;
+  quote:Quotes;
 
   toggleDetails(index){
     this.quotes[index].showDetails = !this.quotes[index].showDetails;
@@ -32,12 +35,21 @@ export class QuoteComponent implements OnInit {
     this.quotes.push(quote)
   }
 
-  constructor(quoteService:QuoteService,alertService:AlertService) {
+  constructor(quoteService:QuoteService,alertService:AlertService,private http:HttpClient) {
     this.quotes = quoteService.getQuotes()
     this.alertService = alertService;
    }
 
   ngOnInit() {
+    interface ApiResponse{
+      author:string;
+      quote: string;
+    }
+
+    this.http.get<ApiResponse>("http://quotes.stormconsultancy.co.uk/random.json").subscribe(data=>{
+      //Successful API request
+      this.quote = new Quotes(data.author,data.quote)
+    })
   }
 
 }

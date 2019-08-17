@@ -11,8 +11,7 @@ export class OrderByUpvotesPipe implements PipeTransform {
   constructor(private quoteService:QuoteService){}
 
   transform(quotes: Quote[]): Quote[] {
-    this.quoteService.sort();
-    return this.quoteService.quotes;
+      return this.quoteService.quotes;
   }
 
 }

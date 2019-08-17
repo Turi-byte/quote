@@ -8,16 +8,30 @@ import { Quotes } from '../quotes';
 export class QuoteService {
   quotes: Quote[]= [];
   
-  sort(){
-    this.quotes
-    sort((a:Quote,b:Quote)=>{
-      return a.upvotes.valueOf()-b.upvotes.valueOf();
-    });
-  }
   
   getQuotes(){
     return Quotes
   }
+
+
+  toggleDetails(index){
+    this.quotes[index].showDetails = !this.quotes[index].showDetails;
+  }
+
+  deleteQuote(isDelete,index){
+    let toDelete = confirm(`Are you sure you wanna delete ${this.quotes[index].publisher}'s quote?`)
+    if (toDelete){
+      this.quotes.splice(index,1);
+    }
+  }
+
+  addNewQuote(quote){
+    let quoteLength = this.quotes.length;
+    quote.id = quoteLength+1;
+    quote.completeDate = new Date(quote.completeDate)
+    this.quotes.push(quote)
+  }
+
 
   constructor() { }
 }

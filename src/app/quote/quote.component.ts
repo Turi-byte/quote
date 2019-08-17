@@ -21,7 +21,7 @@ export class QuoteComponent implements OnInit {
     let toDelete = confirm(`Are you sure you wanna delete ${this.quotes[index].publisher}'s quote?`)
     if (toDelete){
       this.quotes.splice(index,1);
-      this.alertService.alertMe(`The quote by ${this.quotes[index].author} has been deleted`)
+      this.alertService.alertMe("The quote has been deleted")
     }
   }
 
@@ -32,8 +32,9 @@ export class QuoteComponent implements OnInit {
     this.quotes.push(quote)
   }
 
-  constructor(quoteService:QuoteService) {
+  constructor(quoteService:QuoteService,alertService:AlertService) {
     this.quotes = quoteService.getQuotes()
+    this.alertService = alertService;
    }
 
   ngOnInit() {

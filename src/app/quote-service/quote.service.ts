@@ -10,11 +10,11 @@ export class QuoteService {
   
   sort(){
     this.quotes
-    .sort((a:Quote,b:Quote)=>{
+    sort((a:Quote,b:Quote)=>{
       return a.upvotes.valueOf()-b.upvotes.valueOf();
     });
   }
-
+  
   getQuotes(){
     return Quotes
   }

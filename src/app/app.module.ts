@@ -8,6 +8,7 @@ import { QuoteDetailsComponent } from './quote-details/quote-details.component';
 import { DateCountPipe } from './date-count.pipe';
 import { HighlightDirective } from './highlight.directive';
 import { OrderByUpvotesPipe } from './order-by-upvotes.pipe';
+import { QuoteFormComponent } from './quote-form/quote-form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { OrderByUpvotesPipe } from './order-by-upvotes.pipe';
     QuoteDetailsComponent,
     DateCountPipe,
     HighlightDirective,
-    OrderByUpvotesPipe
+    OrderByUpvotesPipe,
+    QuoteFormComponent
   ],
   imports: [
     BrowserModule,

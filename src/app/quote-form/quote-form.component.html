@@ -18,18 +18,11 @@
         </div>
         <div class="form-contol mb-4">
             <label for="publisher">Publisher</label>
-            <input type="text" class="form-control" id="publisher" [(ngModel)]="newQuote.publisher" name="publisher" #publisher='ngModel'>
+            <input type="text" class="form-control" id="publisher" required [(ngModel)]="newQuote.publisher" name="publisher" #publisher='ngModel'>
             <div [hidden]="publisher.valid || publisher.pristine" class="alert alert-warning">
                 <p>Publisher is required</p>
             </div>
-        </div>
-        <div>
-            <label for="complete">Publish date: </label>
-            <input type="date" id="completeDate" required [(ngModel)]="newQuote.completeDate" name="completeDate" #completeDate='ngModel'>
-            <div [hidden]="completeDate.valid || completeDate.pristine" class="alert alert-warning">
-                <p>completeDate is required</p>
-            </div>
-        </div>
-        <button type="submit">Add Quote</button>
+        </div>        
+        <button class="btn btn-outline-success" type="submit">Add Quote</button>
     </form>
 </div> 

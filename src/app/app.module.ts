@@ -13,6 +13,7 @@ import { OrderByUpvotesPipe } from './order-by-upvotes.pipe';
 import { QuoteFormComponent } from './quote-form/quote-form.component';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
     DateCountPipe,
     HighlightDirective,
     OrderByUpvotesPipe,
-    QuoteFormComponent
+    QuoteFormComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

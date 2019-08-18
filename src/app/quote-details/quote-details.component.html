@@ -1,3 +1,11 @@
-<p>~{{quote.author}}~</p>
-<p>posted by {{quote.publisher}} on {{quote.completeDate|date}} which is {{quote.completeDate|dateCount}} days ago</p>
-<button (click)='quoteDelete(true)'>Delete</button>
+<div class="row">    
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Author: {{quote.author}}</h5>
+          <p class="card-text">posted by {{quote.publisher}} on {{quote.completeDate|date}} which is {{quote.completeDate|dateCount}} days ago</p>
+          <button class="btn btn-outline-danger" (click)= 'quoteDelete(true)'>Delete</button>
+        </div>
+      </div>
+    </div>    
+  </div>

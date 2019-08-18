@@ -13,12 +13,10 @@ export class QuoteService {
     return Quotes
   }
 
-  getBestQuote(upvotes){
+  getQuote(id){
     for (let quote of Quotes){
-      if(quote.upvotes == Math.max(quote.upvotes)){
-        return true;
-      }else{
-        return false;
+      if(quote.id == id){
+        return quote;
       }
     }
   }

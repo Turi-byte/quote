@@ -1,25 +1,26 @@
-<div>
-  <ng-progress></ng-progress>
-  <h1 class="ml-3">Turi Quotes</h1>
-  <hr>
-  <div class="row">
-    <blockquote class="blockquote text-center">
+<div >
+  <ng-progress></ng-progress>  
+  <div class="jumbotron">
+    <blockquote class="blockquote lead text-center">
       <p class="mb-0">{{quote.quote}}</p>
       <footer class="blockquote-footer"><cite>{{quote.author}}</cite></footer>
     </blockquote>
-  </div>
-  <div class="row">
+  </div>  
+  <div class="row ml-5">
     <div class="col-md-6">
-        <div class="mb-3" *ngFor='let quote of quotes; let i = index'>
+        <div class="mb-3"  *ngFor='let quote of quotes; let i = index'>
           <div>
-              <h6 id={{i}} appHighlight>
-                  {{quote.name}} <br>                  
-                  <button (click)="quote.upvotes = quote.upvotes + 1">Upvote<i class="fa fa-thumbs-up"></i>        {{quote.upvotes}}
-                  </button> 
-                  <button (click)="quote.downvotes = quote.downvotes + 1">Downvote<i class="fa fa-thumbs-down"></i>    {{quote.downvotes}}</button>
-                  <br>
+              <h6 id={{i}} (click)='toggleDetails(i)'  appHighlight>
+                  {{quote.name}} 
                 </h6>
-                <button (click)='toggleDetails(i)'>Toggle Details</button>
+            <div style="display: flex">                            
+                    <button class="btn btn-warning" (click)="quote.upvotes = quote.upvotes + 1">Likes {{quote.upvotes}}</button> 
+                    <button class="btn btn-danger"(click)="quote.downvotes = quote.downvotes + 1">Dislikes {{quote.downvotes}}</button>
+                    <button class="btn btn-outline-primary" (click)='toggleDetails(i)'>Toggle Details</button>
+                    <br>
+            </div>
+
+                
           </div>            
           <div *ngIf='quote.showDetails'>
               <app-quote-details [quote]='quote' (isDelete)='deleteQuote($event,i)'></app-quote-details>
@@ -29,5 +30,12 @@
     <div class="col-md-6">
       <app-quote-form (addQuote)="addNewQuote($event)"></app-quote-form>
     </div>
-  </div>  
+  </div>
+  <hr>
+  <div class="row ml-5">
+    <blockquote class="blockquote lead text-center">
+      <p class="mb-0">Have fun creating Awesome Quotes and liking and disliking</p>
+      <footer class="blockquote-footer"><cite>The Turi Way Ltd.</cite></footer>
+    </blockquote>
+  </div> 
 </div>

@@ -5,6 +5,7 @@ import {QuoteService } from '../quote-service/quote.service'
 import { AlertService } from '../alert-service/alert.service';
 import { Quotes } from '../quote-class/quote'
 import { QuoteRequestService } from '../quote-http/quote-request.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quote',

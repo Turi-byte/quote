@@ -13,25 +13,14 @@ export class QuoteService {
     return Quotes
   }
 
-
-  toggleDetails(index){
-    this.quotes[index].showDetails = !this.quotes[index].showDetails;
-  }
-
-  deleteQuote(isDelete,index){
-    let toDelete = confirm(`Are you sure you wanna delete ${this.quotes[index].publisher}'s quote?`)
-    if (toDelete){
-      this.quotes.splice(index,1);
+  getBestQuote(upvotes){
+    for (let quote of Quotes){
+      if(quote.upvotes == Math.max(quote.upvotes)){
+        return true;
+      }else{
+        return false;
+      }
     }
   }
-
-  addNewQuote(quote){
-    let quoteLength = this.quotes.length;
-    quote.id = quoteLength+1;
-    quote.completeDate = new Date(quote.completeDate)
-    this.quotes.push(quote)
-  }
-
-
   constructor() { }
 }

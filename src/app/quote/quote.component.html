@@ -13,14 +13,14 @@
         <div class="mb-3" *ngFor='let quote of quotes; let i = index'>
           <div>
               <h6 id={{i}} appHighlight>
-                  {{quote.name}} <br>
+                  {{quote.name}} <br>                  
                   <button (click)="quote.upvotes = quote.upvotes + 1">Upvote<i class="fa fa-thumbs-up"></i>        {{quote.upvotes}}
                   </button> 
                   <button (click)="quote.downvotes = quote.downvotes + 1">Downvote<i class="fa fa-thumbs-down"></i>    {{quote.downvotes}}</button>
                   <br>
                 </h6>
                 <button (click)='toggleDetails(i)'>Toggle Details</button>
-          </div>          
+          </div>            
           <div *ngIf='quote.showDetails'>
               <app-quote-details [quote]='quote' (isDelete)='deleteQuote($event,i)'></app-quote-details>
           </div>

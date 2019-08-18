@@ -4,6 +4,7 @@ import { Quote } from '../quote';
 import {QuoteService } from '../quote-service/quote.service'
 import { AlertService } from '../alert-service/alert.service';
 import { Quotes } from '../quote-class/quote'
+import { QuoteRequestService } from '../quote-http/quote-request.service';
 
 @Component({
   selector: 'app-quote',
@@ -35,24 +36,14 @@ export class QuoteComponent implements OnInit {
     this.quotes.push(quote)
   }
 
-  constructor(quoteService:QuoteService,alertService:AlertService,private http:HttpClient) {
+  constructor(quoteService:QuoteService,alertService:AlertService,private http:HttpClient,private quotesService:QuoteRequestService) {
     this.quotes = quoteService.getQuotes()
     this.alertService = alertService;
    }
 
   ngOnInit() {
-    interface ApiResponse{
-      author:string;
-      quote: string;
+    this.quotesService.quoteRequest()
+    this.quote = this.quotesService.quote
     }
-
-    this.http.get<ApiResponse>("http://quotes.stormconsultancy.co.uk/random.json").subscribe(data=>{
-      //Successful API request
-      this.quote = new Quotes(data.author,data.quote)
-    },err=>{
-      this.quote = new Quotes("Turi Way","Coding crazy!")
-      console.log("An error occured")
-    })
-  }
 
 }

@@ -4,8 +4,6 @@ import { Quote } from '../quote';
 import {QuoteService } from '../quote-service/quote.service'
 import { AlertService } from '../alert-service/alert.service';
 import { Quotes } from '../quote-class/quote'
-import { QuoteRequestService } from '../quote-http/quote-request.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quote',
@@ -17,6 +15,7 @@ export class QuoteComponent implements OnInit {
   quotes: Quote[];
   alertService:AlertService;
   quote:Quotes;
+  bestquote: Quote[];
 
   toggleDetails(index){
     this.quotes[index].showDetails = !this.quotes[index].showDetails;
@@ -30,6 +29,8 @@ export class QuoteComponent implements OnInit {
     }
   }
 
+  
+
   addNewQuote(quote){
     let quoteLength = this.quotes.length;
     quote.id = quoteLength+1;
@@ -37,7 +38,7 @@ export class QuoteComponent implements OnInit {
     this.quotes.push(quote)
   }
 
-  constructor(quoteService:QuoteService,alertService:AlertService,private http:HttpClient,private quotesService:QuoteRequestService) {
+  constructor(quoteService:QuoteService,alertService:AlertService,private http:HttpClient) {
     this.quotes = quoteService.getQuotes()
     this.alertService = alertService;
    }
@@ -51,7 +52,11 @@ export class QuoteComponent implements OnInit {
     this.http.get<ApiResponse>("http://quotes.stormconsultancy.co.uk/random.json").subscribe(data=>{
       // Succesful API request
       this.quote = new Quotes(data.author, data.quote)
+    },err=>{
+        this.quote = new Quotes("Winston Churchill","Never never give up!")
+        console.log("An error occurred")
     })
+  
   }
 
 }

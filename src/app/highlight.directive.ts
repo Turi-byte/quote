@@ -1,6 +1,4 @@
-import { Directive, ElementRef } from '@angular/core';
-import { Quotes } from './quotes';
-import { QuoteService } from './quote-service/quote.service'
+import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appHighlight]'
@@ -9,9 +7,19 @@ export class HighlightDirective {
   
   constructor(private elem:ElementRef){ }
 
+  @HostListener("click") onClicks(){
+    this.textDeco("red")
+  }
+
+  @HostListener("dblclick") onDoubleClicks(){
+    this.textDeco("black")
+  }
+
+  private textDeco(action:string){
+    this.elem.nativeElement.style.color=action;
   
 }
 
-
+}
 
 

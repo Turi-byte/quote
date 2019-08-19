@@ -43,8 +43,15 @@ export class QuoteComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.quotesService.quoteRequest()
-    this.quote = this.quotesService.quote
+    interface ApiResponse{
+      author:string;
+      quote:string;
     }
+
+    this.http.get<ApiResponse>("http://quotes.stormconsultancy.co.uk/random.json").subscribe(data=>{
+      // Succesful API request
+      this.quote = new Quotes(data.author, data.quote)
+    })
+  }
 
 }

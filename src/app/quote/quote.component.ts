@@ -29,7 +29,20 @@ export class QuoteComponent implements OnInit {
     }
   }
 
-  
+  upvotes(i){
+    this.quotes[i].upvotes += 1;
+  }
+
+  highestVotes: number = 0;
+  quotesIndex: number = 0;
+  calculateHighestVotes(){
+    for(var i = 0; i< this.quotes.length;i++){
+      if(this.quotes[i].upvotes > this.highestVotes){
+        this.highestVotes = this.quotes[i].upvotes;
+        this.quotesIndex = i;
+      }
+    }
+  }
 
   addNewQuote(quote){
     let quoteLength = this.quotes.length;

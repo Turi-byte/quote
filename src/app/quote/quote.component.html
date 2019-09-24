@@ -10,11 +10,12 @@
     <div class="col-md-6">
         <div class="mb-3"  *ngFor='let quote of quotes; let i = index'>
           <div>
-              <h6 id={{i}} (click)='toggleDetails(i)'  appHighlight>
+              <h4 id={{i}} (click)='toggleDetails(i)'>
                   {{quote.name}} 
-                </h6>
+                </h4>
+                <h6 id={{i}} *ngIf="i == quotesIndex; else dontHighlight" appHighlight>{{quote.author}}</h6>
             <div style="display: flex">                            
-                    <button class="btn btn-warning" (click)="quote.upvotes = quote.upvotes + 1">Likes {{quote.upvotes}}</button> 
+                    <button class="btn btn-warning" (click)=upvotes(i) (click) ="calculateHighestVotes()">Likes {{quote.upvotes}}</button> 
                     <button class="btn btn-danger"(click)="quote.downvotes = quote.downvotes + 1">Dislikes {{quote.downvotes}}</button>
                     <button class="btn btn-outline-primary" (click)='toggleDetails(i)'>Toggle Details</button>
                     <br>

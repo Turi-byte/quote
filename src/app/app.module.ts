@@ -16,6 +16,7 @@ import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
 import { AboutComponent } from './about/about.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { BestvotedHighlightDirective } from './bestvoted-highlight.directive';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     QuoteFormComponent,
     AboutComponent,
     NavbarComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    BestvotedHighlightDirective
   ],
   imports: [
     BrowserModule,

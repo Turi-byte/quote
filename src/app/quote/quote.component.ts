@@ -25,21 +25,32 @@ export class QuoteComponent implements OnInit {
     let toDelete = confirm(`Are you sure you wanna delete ${this.quotes[index].publisher}'s quote?`)
     if (toDelete){
       this.quotes.splice(index,1);
-      this.alertService.alertMe("The quote has been deleted")
+      this.alertService.alertMe("The quote has been deleted");
+      this.calculateHighestVotes();
     }
   }
 
   upvotes(i){
     this.quotes[i].upvotes += 1;
+    this.calculateHighestVotes();
   }
 
-  highestVotes: number = 0;
+  // highestVotes: number = 0;
   quotesIndex: number = 0;
+
   calculateHighestVotes(){
-    for(var i = 0; i< this.quotes.length;i++){
-      if(this.quotes[i].upvotes > this.highestVotes){
-        this.highestVotes = this.quotes[i].upvotes;
+    var highestVotes: number = 0;
+    // var allUpvotes: number[];
+    // for(var i = 0; i< this.quotes.length;i++){
+    //   allUpvotes.push(this.quotes[i].upvotes);
+    // }
+
+  for(var i = 0; i< this.quotes.length;i++){
+      if(this.quotes[i].upvotes > highestVotes){
+        highestVotes = this.quotes[i].upvotes;
         this.quotesIndex = i;
+
+        // console.log(this.quotes[i].id +" ........... "+ this.quotes[i].actualVotes);
       }
     }
   }

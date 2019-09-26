@@ -17,7 +17,7 @@ import { AboutComponent } from './about/about.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BestvotedHighlightDirective } from './bestvoted-highlight.directive';
-
+import { IssueService } from './issue.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { BestvotedHighlightDirective } from './bestvoted-highlight.directive';
     AboutComponent,
     NavbarComponent,
     NotFoundComponent,
-    BestvotedHighlightDirective
+    BestvotedHighlightDirective,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +41,7 @@ import { BestvotedHighlightDirective } from './bestvoted-highlight.directive';
     NgProgressModule.forRoot(),
     NgProgressHttpClientModule
   ],
-  providers: [],
+  providers: [IssueService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
